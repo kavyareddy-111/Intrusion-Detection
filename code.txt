@@ -1,0 +1,23 @@
+void loop(){ 
+ lcd.setCursor(0, 0);
+ lcd.print("Distance = ");
+ digitalWrite(trigPin, LOW); 
+ delayMicroseconds(2); 
+ digitalWrite(trigPin, HIGH);
+ delayMicroseconds(10);  
+ digitalWrite(trigPin, LOW);
+ duration = pulseIn(echoPin, HIGH);
+ distance= duration*0.034/2;
+ lcd.setCursor(0,11);
+ lcd.print(distance);
+ STATE = digitalRead(2);
+ delay(200);
+ if (STATE == HIGH) {
+ digitalWrite(9, HIGH);
+ tone(7, 700, 7000);
+} else {
+digitalWrite(9, LOW);
+  noTone(7);
+}
+
+
